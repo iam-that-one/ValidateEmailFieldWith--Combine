@@ -23,6 +23,8 @@ struct ContentView: View {
                 .foregroundColor(!vm.canSubmit.value ? .red: .green)
                 .overlay(
                     Text(!vm.canSubmit.value ? "Invalid Email" : "Valid Email")
+                        .fontWeight(.bold)
+                        .foregroundColor(!vm.canSubmit.value ? .black : .white)
                        
                 )
                 
