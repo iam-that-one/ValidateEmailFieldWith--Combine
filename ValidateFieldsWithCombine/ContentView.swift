@@ -17,19 +17,22 @@ struct ContentView: View {
                 TextField("email", text: $vm.email.value)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                     .animation(.spring())
+            
             }
             Circle()
                 .frame(width: 100, height: 100)
                 .foregroundColor(!vm.isValid.value ? .red: .green)
                 .overlay(
-                    Text(!vm.isValid.value ? ErrorMesssage.invalidEmail.message : ErrorMesssage.validEmail.message)
+                    Text(!vm.isValid.value ?  ErrorMesssage.invalidEmail.message : ErrorMesssage.validEmail.message)
                         .fontWeight(.bold)
                         .foregroundColor(!vm.isValid.value ? .black : .white)
+                        .multilineTextAlignment(.center)
                        
                 )
-                
+                .frame(width: vm.isValid.value ? 150: 100, height: vm.isValid.value ? 150 : 100)
                 .overlay(Circle() .stroke(style: StrokeStyle(lineWidth: 2, dash: [5])))
                 .rotationEffect(Angle(degrees: vm.isValid.value ? 360 : 0))
+             
                 .animation(.spring())
         }.padding()
         }
