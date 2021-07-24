@@ -13,7 +13,6 @@ class ViewModel : ObservableObject{
     var isValid = CurrentValueSubject<Bool, Never>(false)
     var email = CurrentValueSubject<String, Never>("")
   
-    
     let checkEmail = NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}")
     var subscribtionSet : Set<AnyCancellable> = []
     init() {
@@ -31,5 +30,20 @@ class ViewModel : ObservableObject{
     var emailPrompt : String{
         isValid.value ? "" : "Please, Enter a valid email"
     }
+
     
+}
+
+enum ErrorMesssage {
+    case invalidEmail
+    case validEmail
+    var message : String{
+        switch self{
+        case .invalidEmail:
+            return "invalid Email"
+        case .validEmail:
+            return "valid Email"
+        }
+       
+    }
 }

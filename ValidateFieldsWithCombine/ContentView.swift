@@ -22,7 +22,7 @@ struct ContentView: View {
                 .frame(width: 100, height: 100)
                 .foregroundColor(!vm.isValid.value ? .red: .green)
                 .overlay(
-                    Text(!vm.isValid.value ? "Invalid Email" : "Valid Email")
+                    Text(!vm.isValid.value ? ErrorMesssage.invalidEmail.message : ErrorMesssage.validEmail.message)
                         .fontWeight(.bold)
                         .foregroundColor(!vm.isValid.value ? .black : .white)
                        
