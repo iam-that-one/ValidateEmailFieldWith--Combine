@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 struct ContentView: View {
     @StateObject var vm = ViewModel()
@@ -14,8 +13,10 @@ struct ContentView: View {
         VStack(spacing: 20){
             VStack{
                 Text(!vm.canSubmit.value ? vm.emailPrompt : "")
+                    .animation(.spring())
                 TextField("email", text: $vm.email.value)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .animation(.spring())
             }
             Circle()
                 .frame(width: 100, height: 100)
