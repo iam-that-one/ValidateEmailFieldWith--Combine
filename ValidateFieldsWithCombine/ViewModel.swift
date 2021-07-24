@@ -9,10 +9,8 @@ import Foundation
 import SwiftUI
 import Combine
 class ViewModel : ObservableObject{
-    
     var isValid = CurrentValueSubject<Bool, Never>(false)
     var email = CurrentValueSubject<String, Never>("")
-  
     let checkEmail = NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}")
     var subscribtionSet : Set<AnyCancellable> = []
     init() {
@@ -23,14 +21,10 @@ class ViewModel : ObservableObject{
             }
             .assign(to:\.isValid.value, on: self)
             .store(in: &subscribtionSet)
-        
-   
-        
     }
     var emailPrompt : String{
         isValid.value ? "" : "Please, Enter a valid email"
     }
-
     
 }
 
@@ -44,6 +38,5 @@ enum ErrorMesssage {
         case .validEmail:
             return "valid Email"
         }
-       
     }
 }

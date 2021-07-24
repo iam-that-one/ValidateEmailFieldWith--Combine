@@ -10,14 +10,14 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var vm = ViewModel()
     var body: some View {
-        VStack(spacing: 20){
+        VStack(spacing: 40){
             VStack{
-                Text(!vm.isValid.value ? vm.emailPrompt : "")
+                Text(vm.emailPrompt)
                     .animation(.spring())
+                    .opacity(vm.isValid.value ? 0 : 1)
                 TextField("email", text: $vm.email.value)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
                     .animation(.spring())
-            
             }
             Circle()
                 .frame(width: 100, height: 100)
@@ -27,17 +27,16 @@ struct ContentView: View {
                         .fontWeight(.bold)
                         .foregroundColor(!vm.isValid.value ? .black : .white)
                         .multilineTextAlignment(.center)
-                       
                 )
                 .frame(width: vm.isValid.value ? 150: 100, height: vm.isValid.value ? 150 : 100)
                 .overlay(Circle() .stroke(style: StrokeStyle(lineWidth: 2, dash: [5])))
                 .rotationEffect(Angle(degrees: vm.isValid.value ? 360 : 0))
-             
+                
                 .animation(.spring())
+            Spacer()
         }.padding()
-        }
     }
-
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
