@@ -18,7 +18,7 @@ struct ContentView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             }
             Circle()
-                .frame(width: 100, height: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .frame(width: 100, height: 100)
                 .foregroundColor(!vm.canSubmit.value ? .red: .green)
                 .overlay(
                     Text(!vm.canSubmit.value ? "Invalid Email" : "Valid Email")
