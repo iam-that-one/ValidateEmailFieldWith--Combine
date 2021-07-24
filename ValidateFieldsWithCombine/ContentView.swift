@@ -12,7 +12,7 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 20){
             VStack{
-                Text(!vm.canSubmit.value ? vm.emailPrompt : "")
+                Text(!vm.isValid.value ? vm.emailPrompt : "")
                     .animation(.spring())
                 TextField("email", text: $vm.email.value)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -20,16 +20,16 @@ struct ContentView: View {
             }
             Circle()
                 .frame(width: 100, height: 100)
-                .foregroundColor(!vm.canSubmit.value ? .red: .green)
+                .foregroundColor(!vm.isValid.value ? .red: .green)
                 .overlay(
-                    Text(!vm.canSubmit.value ? "Invalid Email" : "Valid Email")
+                    Text(!vm.isValid.value ? "Invalid Email" : "Valid Email")
                         .fontWeight(.bold)
-                        .foregroundColor(!vm.canSubmit.value ? .black : .white)
+                        .foregroundColor(!vm.isValid.value ? .black : .white)
                        
                 )
                 
                 .overlay(Circle() .stroke(style: StrokeStyle(lineWidth: 2, dash: [5])))
-                .rotationEffect(Angle(degrees: vm.canSubmit.value ? 360 : 0))
+                .rotationEffect(Angle(degrees: vm.isValid.value ? 360 : 0))
                 .animation(.spring())
         }.padding()
         }
