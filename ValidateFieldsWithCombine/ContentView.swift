@@ -12,13 +12,19 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 40){
             VStack{
-                Text(vm.emailPrompt)
-                    .animation(.spring())
-                    .opacity(vm.isValid.value ? 0 : 1)
-                TextField("email", text: $vm.email.value)
+               
+                TextField("Email", text: $vm.email.value)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .animation(.spring())
                     .autocapitalization(.none)
+                HStack{
+                Text(vm.emailPrompt)
+                    .animation(.spring())
+                    .opacity(vm.isValid.value ? 0 : 1)
+                    .font(Font.system(size: 8, weight: .semibold, design: .monospaced))
+                    .foregroundColor(.red)
+                    Spacer()
+                }
             }
             Circle()
                 .frame(width: 100, height: 100)
