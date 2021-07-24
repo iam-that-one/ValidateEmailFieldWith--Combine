@@ -21,11 +21,12 @@ class ViewModel : ObservableObject{
             }
             .assign(to:\.isValid.value, on: self)
             .store(in: &subscribtionSet)
+            
+            
     }
     var emailPrompt : String{
         isValid.value ? "" : "Please, Enter a valid email"
     }
-    
 }
 
 enum ErrorMesssage {

@@ -18,6 +18,7 @@ struct ContentView: View {
                 TextField("email", text: $vm.email.value)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .animation(.spring())
+                    .autocapitalization(.none)
             }
             Circle()
                 .frame(width: 100, height: 100)
